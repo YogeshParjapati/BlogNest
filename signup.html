@@ -1,0 +1,205 @@
+<div class="signup-container">
+    <h2 class="title">Create Account</h2>
+    <form action="/signup" method="post" class="signup-form">
+        <input type="text" name="name" placeholder="Enter your username" class="input-field" required>
+        <input type="email" name="email" placeholder="Enter your email" class="input-field" required>
+        <div class="password-container">
+            <input type="password" name="password" placeholder="Enter your password" class="input-field password-input" required>
+            <button type="button" class="toggle-password" aria-label="Toggle password visibility">
+                👁️
+            </button>
+        </div>
+        <button type="submit" class="submit-btn">Sign Up</button>
+        <p class="login-text">Already have an account? <a href="/login" class="login-link">Login here</a></p>
+    </form>
+</div>
+
+<style>
+/* Reset basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #00bcd4, #009688);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    overflow: hidden;
+}
+
+/* Container */
+.signup-container {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 50px 30px;
+    border-radius: 16px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Title */
+.title {
+    font-size: 28px;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Form styling */
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Input fields */
+.input-field {
+    padding: 14px 16px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background: #fff;
+    color: #333;
+    width: 100%;
+}
+
+.input-field:focus {
+    border-color: #ff7eb3;
+    box-shadow: 0 0 8px rgba(255, 126, 179, 0.5);
+}
+
+/* Password container */
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-input {
+    flex: 1;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #666;
+    outline: none;
+}
+
+.toggle-password:hover {
+    color: #ff4567;
+}
+
+/* Button */
+.submit-btn {
+    padding: 14px;
+    background: linear-gradient(135deg, #00bcd4, #ff758c);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(255, 126, 179, 0.4);
+}
+
+/* Link */
+.login-text {
+    font-size: 14px;
+    color: #555;
+}
+
+.login-link {
+    color: #0d2fd7;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.login-link:hover {
+    color: #ff4567;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .signup-container {
+        padding: 40px 20px;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    .input-field {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    .submit-btn {
+        font-size: 15px;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .signup-container {
+        width: 90%;
+    }
+
+    .title {
+        font-size: 22px;
+    }
+
+    .input-field {
+        font-size: 13px;
+        padding: 10px;
+    }
+
+    .submit-btn {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+</style>
+
+<script>
+    const togglePassword = document.querySelector('.toggle-password');
+    const passwordInput = document.querySelector('.password-input');
+
+    togglePassword.addEventListener('click', () => {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        togglePassword.textContent = type === 'password' ? '👁️' : '🙈';
+    });
+</script>
